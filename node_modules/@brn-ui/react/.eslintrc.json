@@ -1,0 +1,3 @@
+{
+  "extends": "@brn-ui/eslint-config"
+}
