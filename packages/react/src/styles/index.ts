@@ -1,12 +1,12 @@
 import {
   colors,
-  fonts,
   fontSizes,
   fontWeights,
+  fonts,
   lineHeights,
   radii,
   space,
-} from '@brn-ui/tokens'
+} from '@brnmilano-ui/tokens'
 import { createStitches, defaultThemeMap } from '@stitches/react'
 
 export const {
@@ -24,14 +24,13 @@ export const {
     height: 'space',
     width: 'space',
   },
-
   theme: {
-    colors: colors,
-    fontSizes: fontSizes,
-    fontWeights: fontWeights,
-    fonts: fonts,
-    lineHeights: lineHeights,
-    radii: radii,
-    space: space,
+    colors,
+    fontSizes,
+    fontWeights,
+    fonts,
+    lineHeights,
+    radii,
+    space,
   },
 })

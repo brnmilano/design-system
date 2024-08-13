@@ -1,4 +1,6 @@
 {
-  "extends": "@brn-ui/ts-config/react.json",
-  "include": ["src"]
+    "extends": "@brnmilano-ui/ts-config/react.json",
+    "include": [
+        "src"
+    ]
 }
