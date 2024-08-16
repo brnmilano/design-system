@@ -1,6 +1,6 @@
 {
   "name": "design-system",
-  "private": true,
+  "private": false,
   "workspaces": [
     "packages/*"
   ],
@@ -9,11 +9,14 @@
     "build": "turbo run build",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "turbo run build --filter=packages/docs && changeset publish"
+    "release": "turbo run build && changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.7",
     "turbo": "^2.0.14"
   },
-  "packageManager": "npm@8.1.0"
+  "packageManager": "npm@8.1.0",
+  "publishConfig": {
+    "access": "public"
+  }
 }
