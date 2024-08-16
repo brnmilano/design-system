@@ -1,5 +1,11 @@
 # @brnmilano-ui/tokens
 
+## 4.1.1
+
+### Patch Changes
+
+- Add option to pass reference to TextInput and adjust some styles
+
 ## 4.1.0
 
 ### Minor Changes
