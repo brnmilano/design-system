@@ -1,5 +1,11 @@
 # @brnmilano-ui/eslint-config
 
+## 4.0.0
+
+### Major Changes
+
+- .
+
 ## 3.0.0
 
 ### Major Changes
