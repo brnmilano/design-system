@@ -1,7 +1,6 @@
 {
   "name": "@brnmilano-ui/docs",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,7 +10,6 @@
     "build": "storybook build"
   },
   "keywords": [],
-  "author": "",
   "license": "MIT",
   "devDependencies": {
     "@storybook/addon-essentials": "^7.0.18",
@@ -37,5 +35,8 @@
     "@storybook/addon-a11y": "^7.0.18",
     "phosphor-react": "^1.4.1",
     "polished": "^4.2.2"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
