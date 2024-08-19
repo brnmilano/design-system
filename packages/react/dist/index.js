@@ -68,6 +68,8 @@ __export(src_exports, {
   Text: () => Text,
   TextArea: () => TextArea,
   TextInput: () => TextInput,
+  Toast: () => Toast,
+  Tooltip: () => Tooltip,
   config: () => config,
   createTheme: () => createTheme,
   css: () => css,
@@ -95,7 +97,7 @@ var colors = {
   ignite500: "#00875F",
   ignite700: "#015F43",
   ignite900: "#00291D",
-  test: "#000000"
+  error: "#c30010"
 };
 var space = {
   1: "0.25rem",
@@ -110,6 +112,7 @@ var space = {
   12: "3rem",
   16: "4rem",
   20: "5rem",
+  22: "6.2rem",
   40: "10rem",
   64: "16rem",
   80: "20rem"
@@ -563,6 +566,123 @@ function MultiStep({ size, currentStep = 1 }) {
   ] });
 }
 MultiStep.displayName = "MultiStep";
+
+// src/components/Tooltip/styles.ts
+var TooltipText = styled("div", {
+  backgroundColor: "$gray900",
+  color: "$white",
+  width: "220px",
+  textAlign: "center",
+  lineHeight: "$tall",
+  borderRadius: "$xs",
+  cursor: "pointer",
+  marginTop: "$40",
+  fontFamily: "$default"
+});
+var TooltipBox = styled("div", {
+  position: "absolute",
+  bottom: "calc(100% + 15px)",
+  left: "0",
+  visibility: "hidden",
+  color: "transparent",
+  backgroundColor: "transparent",
+  width: "220px",
+  borderRadius: "$xs",
+  fontFamily: "$default",
+  fontWeight: "$medium",
+  lineHeight: "$shorter",
+  "&:before": {
+    content: '""',
+    width: 0,
+    height: 0,
+    left: "$22",
+    bottom: "-10px",
+    position: "absolute",
+    border: "10px solid transparent",
+    transform: "rotate(315deg)"
+  }
+});
+var TooltipCard = styled("div", {
+  position: "relative",
+  [`& ${TooltipText}:hover + ${TooltipBox}`]: {
+    visibility: "visible",
+    textAlign: "center",
+    color: "$white",
+    backgroundColor: "$gray900",
+    width: "220px",
+    fontSize: "$sm",
+    "&:before": {
+      borderColor: "transparent transparent $gray900 $gray900"
+    }
+  }
+});
+
+// src/components/Tooltip/Tooltip.tsx
+var import_jsx_runtime5 = require("react/jsx-runtime");
+function Tooltip({ children }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(import_jsx_runtime5.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(TooltipCard, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(TooltipText, { children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("p", { children: "Tooltip" }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(TooltipBox, { children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("p", { children }) })
+  ] }) });
+}
+Tooltip.displayName = "Tooltip";
+
+// src/components/Toast/Toast.tsx
+var import_react_hot_toast = __toESM(require("react-hot-toast"));
+
+// src/components/Toast/styles.ts
+var ToastContainer = styled("div", {
+  backgroundColor: "$gray800",
+  fontFamily: "$default",
+  padding: "$1 $5",
+  borderRadius: "$sm",
+  border: "1px solid $gray500"
+});
+var ToastTitle = styled("h1", {
+  fontSize: "$xl",
+  fontWeight: "$bold",
+  variants: {
+    type: {
+      success: {
+        color: "$ignite300"
+      },
+      error: {
+        color: "$error"
+      }
+    }
+  },
+  defaultVariants: {
+    type: "success"
+  }
+});
+var ToastSubtitle = styled("p", {
+  color: "$gray200",
+  fontSize: "$sm",
+  fontWeight: "$regular",
+  defaultVariants: {
+    type: "success"
+  }
+});
+
+// src/components/Toast/Toast.tsx
+var import_jsx_runtime6 = require("react/jsx-runtime");
+function Toast({ title, subtitle, type = "success" }) {
+  const handleToast = () => {
+    import_react_hot_toast.default.custom(
+      () => /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(ToastContainer, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(ToastTitle, { type, children: title }),
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(ToastSubtitle, { children: subtitle })
+      ] }),
+      {
+        duration: 2e3
+      }
+    );
+  };
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_react_hot_toast.Toaster, { position: "bottom-right", reverseOrder: false }),
+    /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Button, { onClick: handleToast, children: "Toast me!" })
+  ] });
+}
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Avatar,
@@ -574,6 +694,8 @@ MultiStep.displayName = "MultiStep";
   Text,
   TextArea,
   TextInput,
+  Toast,
+  Tooltip,
   config,
   createTheme,
   css,

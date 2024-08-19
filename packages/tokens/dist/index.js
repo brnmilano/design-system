@@ -46,7 +46,7 @@ var colors = {
   ignite500: "#00875F",
   ignite700: "#015F43",
   ignite900: "#00291D",
-  test: "#000000"
+  error: "#c30010"
 };
 
 // src/space.ts
@@ -63,6 +63,7 @@ var space = {
   12: "3rem",
   16: "4rem",
   20: "5rem",
+  22: "6.2rem",
   40: "10rem",
   64: "16rem",
   80: "20rem"

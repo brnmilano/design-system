@@ -14,6 +14,7 @@
  * @property {string} 12 - 3rem | 48px
  * @property {string} 16 - 4rem | 64px
  * @property {string} 20 - 5rem | 80px
+ * @property {string} 22 - 6rem | 96px
  * @property {string} 40 - 10rem | 160px
  * @property {string} 64 - 16rem | 256px
  * @property {string} 80 - 20rem | 320px
@@ -31,6 +32,7 @@ export const space = {
   12: '3rem',
   16: '4rem',
   20: '5rem',
+  22: '6.2rem',
   40: '10rem',
   64: '16rem',
   80: '20rem',

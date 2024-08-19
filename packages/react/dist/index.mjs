@@ -46,7 +46,7 @@ var colors = {
   ignite500: "#00875F",
   ignite700: "#015F43",
   ignite900: "#00291D",
-  test: "#000000"
+  error: "#c30010"
 };
 var space = {
   1: "0.25rem",
@@ -61,6 +61,7 @@ var space = {
   12: "3rem",
   16: "4rem",
   20: "5rem",
+  22: "6.2rem",
   40: "10rem",
   64: "16rem",
   80: "20rem"
@@ -514,6 +515,123 @@ function MultiStep({ size, currentStep = 1 }) {
   ] });
 }
 MultiStep.displayName = "MultiStep";
+
+// src/components/Tooltip/styles.ts
+var TooltipText = styled("div", {
+  backgroundColor: "$gray900",
+  color: "$white",
+  width: "220px",
+  textAlign: "center",
+  lineHeight: "$tall",
+  borderRadius: "$xs",
+  cursor: "pointer",
+  marginTop: "$40",
+  fontFamily: "$default"
+});
+var TooltipBox = styled("div", {
+  position: "absolute",
+  bottom: "calc(100% + 15px)",
+  left: "0",
+  visibility: "hidden",
+  color: "transparent",
+  backgroundColor: "transparent",
+  width: "220px",
+  borderRadius: "$xs",
+  fontFamily: "$default",
+  fontWeight: "$medium",
+  lineHeight: "$shorter",
+  "&:before": {
+    content: '""',
+    width: 0,
+    height: 0,
+    left: "$22",
+    bottom: "-10px",
+    position: "absolute",
+    border: "10px solid transparent",
+    transform: "rotate(315deg)"
+  }
+});
+var TooltipCard = styled("div", {
+  position: "relative",
+  [`& ${TooltipText}:hover + ${TooltipBox}`]: {
+    visibility: "visible",
+    textAlign: "center",
+    color: "$white",
+    backgroundColor: "$gray900",
+    width: "220px",
+    fontSize: "$sm",
+    "&:before": {
+      borderColor: "transparent transparent $gray900 $gray900"
+    }
+  }
+});
+
+// src/components/Tooltip/Tooltip.tsx
+import { Fragment, jsx as jsx5, jsxs as jsxs4 } from "react/jsx-runtime";
+function Tooltip({ children }) {
+  return /* @__PURE__ */ jsx5(Fragment, { children: /* @__PURE__ */ jsxs4(TooltipCard, { children: [
+    /* @__PURE__ */ jsx5(TooltipText, { children: /* @__PURE__ */ jsx5("p", { children: "Tooltip" }) }),
+    /* @__PURE__ */ jsx5(TooltipBox, { children: /* @__PURE__ */ jsx5("p", { children }) })
+  ] }) });
+}
+Tooltip.displayName = "Tooltip";
+
+// src/components/Toast/Toast.tsx
+import toast, { Toaster } from "react-hot-toast";
+
+// src/components/Toast/styles.ts
+var ToastContainer = styled("div", {
+  backgroundColor: "$gray800",
+  fontFamily: "$default",
+  padding: "$1 $5",
+  borderRadius: "$sm",
+  border: "1px solid $gray500"
+});
+var ToastTitle = styled("h1", {
+  fontSize: "$xl",
+  fontWeight: "$bold",
+  variants: {
+    type: {
+      success: {
+        color: "$ignite300"
+      },
+      error: {
+        color: "$error"
+      }
+    }
+  },
+  defaultVariants: {
+    type: "success"
+  }
+});
+var ToastSubtitle = styled("p", {
+  color: "$gray200",
+  fontSize: "$sm",
+  fontWeight: "$regular",
+  defaultVariants: {
+    type: "success"
+  }
+});
+
+// src/components/Toast/Toast.tsx
+import { jsx as jsx6, jsxs as jsxs5 } from "react/jsx-runtime";
+function Toast({ title, subtitle, type = "success" }) {
+  const handleToast = () => {
+    toast.custom(
+      () => /* @__PURE__ */ jsxs5(ToastContainer, { children: [
+        /* @__PURE__ */ jsx6(ToastTitle, { type, children: title }),
+        /* @__PURE__ */ jsx6(ToastSubtitle, { children: subtitle })
+      ] }),
+      {
+        duration: 2e3
+      }
+    );
+  };
+  return /* @__PURE__ */ jsxs5("div", { children: [
+    /* @__PURE__ */ jsx6(Toaster, { position: "bottom-right", reverseOrder: false }),
+    /* @__PURE__ */ jsx6(Button, { onClick: handleToast, children: "Toast me!" })
+  ] });
+}
 export {
   Avatar2 as Avatar,
   Box,
@@ -524,6 +642,8 @@ export {
   Text,
   TextArea,
   TextInput,
+  Toast,
+  Tooltip,
   config,
   createTheme,
   css,

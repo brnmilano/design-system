@@ -13,7 +13,7 @@ declare const colors: {
     ignite500: string;
     ignite700: string;
     ignite900: string;
-    test: string;
+    error: string;
 };
 
 /**
@@ -32,6 +32,7 @@ declare const colors: {
  * @property {string} 12 - 3rem | 48px
  * @property {string} 16 - 4rem | 64px
  * @property {string} 20 - 5rem | 80px
+ * @property {string} 22 - 6rem | 96px
  * @property {string} 40 - 10rem | 160px
  * @property {string} 64 - 16rem | 256px
  * @property {string} 80 - 20rem | 320px
@@ -49,6 +50,7 @@ declare const space: {
     12: string;
     16: string;
     20: string;
+    22: string;
     40: string;
     64: string;
     80: string;
@@ -150,10 +152,10 @@ declare const fontWeights: {
  * Line heights
  *
  * @type {Object}
- * @property {string} shorter - 125% | 1.25
- * @property {string} short - 140% | 1.4
- * @property {string} base - 160% | 1.6
- * @property {string} tall - 180% | 1.8
+ * @property {string} shorter - 125% | 1.25 | 20px | 1.25rem
+ * @property {string} short - 140% | 1.4 | 22.4px | 1.4rem
+ * @property {string} base - 160% | 1.6 | 25.6px | 1.6rem
+ * @property {string} tall - 180% | 1.8 | 28.8px | 1.8rem
  */
 declare const lineHeights: {
     shorter: string;
